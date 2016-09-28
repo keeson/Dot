@@ -1,4 +1,6 @@
 #!/bin/sh
+cur_dir=$(cd `dirname $0`; pwd)
+cd $cur_dir
 function rock()
 {
     file_name=$1
@@ -16,13 +18,11 @@ function rock()
     cmd="rm ~/.$rock_name"
     echo $cmd
     eval $cmd
-    cmd="ln -s $file_name ~/.$rock_name"
+    cmd="ln -s $cur_dir/$file_name ~/.$rock_name"
     echo $cmd
     eval $cmd
 }
 
-cur_dir=$(cd `dirname $0`; pwd)
-cd $cur_dir
 filelist=`ls .`
 for file in $filelist
 do
