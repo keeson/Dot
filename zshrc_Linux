@@ -45,7 +45,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx)
+plugins=(git)
 
 # User configuration
 
@@ -77,28 +77,14 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_77.jdk/Contents/Home/"
-CLASS_PATH="$JAVA_HOME/lib"
 
 PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 export PATH
-export CC=/usr/local/bin/gcc-6
-export CXX=/usr/local/bin/g++-6 
-alias ls='ls -G'
-alias ll='ls -lh'
-alias dir='dir --color=auto'
-alias vdir='vdir --color=auto'
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
 alias es='emacsclient -t -nw'
 alias emacs='emacs -nw'
 alias rsync='rsync -avzP --exclude=".*"'
 export TERM="xterm-256color"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export ARCHFLAGS="-Wno-error=unused-command-line-argument-hard-error-in-future"
-export CC=/usr/local/bin/gcc-6
-export CXX=/usr/local/bin/g++-6 
-
-
+ulimit -c unlimited
+TMOUT=0

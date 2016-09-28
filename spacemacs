@@ -33,7 +33,7 @@ values."
    '(
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
+     ;; Uncomment some layer name and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      helm
@@ -43,12 +43,9 @@ values."
      git
      markdown
      cscope
-     c-c++
+     vim-empty-lines
      shell
      ;; org
-     (shell :variables
-             shell-default-height 30
-             shell-default-position 'bottom)
      spell-checking
      syntax-checking
      sql
@@ -56,6 +53,7 @@ values."
      shell-scripts
      javascript
      ;; version-control
+     c-c++
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -133,17 +131,23 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
+   dotspacemacs-themes '(spacemacs-light
+                         monokai
+                         gruvbox
+                         hc-zenburn
+                         wombat
+                         sanityinc-solarized-dark
+                         spacemacs-dark
                          spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 14
+                               :size 15
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 0.8)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -232,11 +236,11 @@ values."
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup nil
+   dotspacemacs-maximized-at-startup t
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
-   dotspacemacs-active-transparency 90
+   dotspacemacs-active-transparency 70
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's inactive or deselected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -254,7 +258,7 @@ values."
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers 'text-mode
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -285,7 +289,7 @@ values."
    ;; `trailing' to delete only the whitespace at end of lines, `changed'to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
-   dotspacemacs-whitespace-cleanup nil
+   dotspacemacs-whitespace-cleanup 'all
    ))
 
 (defun dotspacemacs/user-init ()
@@ -309,12 +313,10 @@ you should place your code here."
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 
+
 ;; keeson add here
 (setq-default dotspacemacs-configuration-layers
               '((c-c++ :variables c-c++-enable-clang-support t)))
-(setq-default dotspacemacs-configuration-layers
-              '((c-c++ :variables
-                       c-c++-default-mode-for-headers 'c++-mode)))
 (setq c-basic-offset 4)
 
 (setq tramp-ssh-controlmaster-options "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
@@ -322,15 +324,35 @@ you should place your code here."
 ;; require a empty-line
 (setq require-final-newline t)
 
-;; smooth scroll
-(setq scroll-margin 5
-      scroll-conservatively 10000)
-
-;; line number
-(global-linum-mode 1)
 
 ;; set indent
 (setq indent-tabs-mode nil)
 (setq tab-always-indent nil)
 (setq tab-width 4)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(c-basic-offset 4)
+ '(column-number-mode t)
+ '(custom-safe-themes
+   (quote
+    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
+ '(evil-want-Y-yank-to-eol nil)
+ '(require-final-newline (quote visit-save))
+ '(sp-autoinsert-pair nil)
+ '(tab-always-indent t)
+ '(tab-width 4)
+ '(transient-mark-mode (quote (only . t))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Source Code Pro" :foundry "nil" :slant normal :weight normal :height 150 :width normal)))))
 
+(setq-default dotspacemacs-configuration-layers
+              '((c-c++ :variables c-c++-default-mode-for-headers 'c++-mode)))
