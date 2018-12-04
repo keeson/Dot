@@ -3,7 +3,7 @@
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 chsh -s /bin/zsh
 
-
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
 cur_dir=$(cd `dirname $0`; pwd)
 cd $cur_dir
