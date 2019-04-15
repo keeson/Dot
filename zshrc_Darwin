@@ -103,3 +103,5 @@ export ARCHFLAGS="-Wno-error=unused-command-line-argument-hard-error-in-future"
 #export CC=/usr/local/bin/gcc-6
 #export CXX=/usr/local/bin/g++-6
 setopt no_nomatch
+export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
